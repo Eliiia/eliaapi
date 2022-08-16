@@ -3,6 +3,12 @@ import { port } from "./config";
 
 const app = express();
 
+import routes from "./routes";
+import middleware from "./middleware";
+
+middleware(app);
+routes(app);
+
 app.get("*", (req, res) => {
     res.send();
 });
