@@ -10,7 +10,7 @@ middleware(app);
 routes(app);
 
 app.get("*", (req, res) => {
-    res.send();
+    res.status(404).send();
 });
 
 app.listen(port, () => {
