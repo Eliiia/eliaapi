@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/start.ts",
   "scripts": {
-    "test": "nodemon"
+    "test": "nodemon -- --files src/start.ts"
   },
   "repository": {
     "type": "git",
