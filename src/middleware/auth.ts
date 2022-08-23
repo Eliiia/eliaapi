@@ -7,7 +7,7 @@ export default function auth(req: Request, res: Response, next: NextFunction) {
     const auth = req.headers.authorization.split(" ")[1];
 
     if (req.headers.authorization.startsWith("ADMIN ")) {
-        if (auth == adminPw) return (req.user = "admin");
+        if (auth == adminPw) req.user = "admin";
     } else res.status(400).send();
 
     next();
