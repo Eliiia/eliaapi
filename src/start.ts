@@ -21,5 +21,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(port, () => {
-    console.log(`Running on http://localhost:${port}!`);
+    console.log(`\nRunning on http://localhost:${port}!`);
 });

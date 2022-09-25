@@ -8,4 +8,7 @@ if (adminPassword == "password")
 
 export const adminPw = adminPassword;
 
+export const dbHost = process.env.DBHOST
+    ? process.env.DBHOST
+    : "localhost:27017";
 export const dbName = process.env.DBNAME ? process.env.DBNAME : "eliaapi";
