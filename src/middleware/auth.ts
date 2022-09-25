@@ -3,7 +3,7 @@ import { adminPw } from "../config";
 
 export default function auth(req: Request, res: Response, next: NextFunction) {
     if (req.path.startsWith("/register") || req.path.startsWith("/login"))
-        next();
+        return next();
 
     if (!req.headers.authorization) return res.status(401).send();
 
