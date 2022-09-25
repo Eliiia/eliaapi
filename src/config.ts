@@ -12,3 +12,5 @@ export const dbHost = process.env.DBHOST
     ? process.env.DBHOST
     : "localhost:27017";
 export const dbName = process.env.DBNAME ? process.env.DBNAME : "eliaapi";
+
+export const saltRounds = process.env.SALT ? process.env.SALT : 10;
