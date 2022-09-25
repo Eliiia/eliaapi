@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from "express";
 import { port } from "./config";
-import db from "./db/main";
+import db from "./db/db";
 
 db();
 
