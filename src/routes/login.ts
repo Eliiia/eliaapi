@@ -18,7 +18,7 @@ export default async function login(req: Request, res: Response) {
     if (!(await bcrypt.compare(req.body.password, user.password)))
         return res.status(401).send({ err: "Incorrect Password" });
 
-    let token = sign({ sub: user._id }, jwtSecret, { algorithm: "RS256" });
+    let token = sign({ sub: user._id }, jwtSecret);
 
     res.status(200).send({ token: token });
 }
