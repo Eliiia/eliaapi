@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { adminPw } from "../config";
+import { verify } from "jsonwebtoken";
+import { adminPw, jwtSecret } from "../config";
 
 export default function auth(req: Request, res: Response, next: NextFunction) {
     if (req.path.startsWith("/register") || req.path.startsWith("/login"))
@@ -9,9 +10,21 @@ export default function auth(req: Request, res: Response, next: NextFunction) {
 
     const auth = req.headers.authorization.split(" ")[1];
 
-    if (req.headers.authorization.startsWith("ADMIN ")) {
+    if (req.headers.authorization.startsWith("Bearer ")) {
+        try {
+            const u = verify(auth, jwtSecret);
+            req.user = u.sub;
+        } catch (err: any) {
+            switch (err.message) {
+                case "jwt expired":
+                    return res.status(401).send({ err: "Token Expired" });
+                case "jwt malformed" || "invalid signature":
+                    return res.status(401).send({ err: "Invalid Token" });
+            }
+        }
+    } else if (req.headers.authorization.startsWith("ADMIN ")) {
         if (auth == adminPw) req.user = "admin";
-    } else res.status(400).send();
+    } else return res.status(400).send();
 
     next();
 }
