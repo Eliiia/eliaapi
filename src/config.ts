@@ -7,3 +7,5 @@ if (adminPassword == "password")
     console.log("RUNNING WITH 'password' AS PASSWORD");
 
 export const adminPw = adminPassword;
+
+export const dbName = process.env.DBNAME ? process.env.DBNAME : "eliaapi";
