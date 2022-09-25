@@ -2,6 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import { adminPw } from "../config";
 
 export default function auth(req: Request, res: Response, next: NextFunction) {
+    if (req.path.startsWith("/register") || req.path.startsWith("/login"))
+        next();
+
     if (!req.headers.authorization) return res.status(401).send();
 
     const auth = req.headers.authorization.split(" ")[1];
