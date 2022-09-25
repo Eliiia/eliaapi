@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import { sign } from "jsonwebtoken";
 
 import { User } from "../db/User";
+import { jwtSecret } from "../config";
 
 export default async function login(req: Request, res: Response) {
     if (!req.body.username)
@@ -16,5 +18,7 @@ export default async function login(req: Request, res: Response) {
     if (!(await bcrypt.compare(req.body.password, user.password)))
         return res.status(401).send({ err: "Incorrect Password" });
 
-    res.status(200).send({ token: "" });
+    let token = sign({ sub: user._id }, jwtSecret, { algorithm: "RS256" });
+
+    res.status(200).send({ token: token });
 }
