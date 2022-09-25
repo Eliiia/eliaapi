@@ -17,7 +17,7 @@ app.get("*", (req, res) => {
 });
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    res.status(500).send({ error: `${err.name}: ${err.message}` });
+    res.status(500).send({ err: `${err.name}: ${err.message}` });
 });
 
 app.listen(port, () => {
