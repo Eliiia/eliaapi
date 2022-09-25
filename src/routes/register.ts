@@ -15,7 +15,13 @@ export default async function register(req: Request, res: Response) {
         password: hash(req.body.password),
     });
 
-    user.save();
+    try {
+        await user.save();
+    } catch (err: any) {
+        if (err.code == 11000)
+            return res.status(401).send({ err: "Username Used" });
+        else throw err;
+    }
 
     res.status(204).send();
 }
