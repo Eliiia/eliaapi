@@ -1,5 +1,5 @@
 {
-  "name": "eliamoneyzapi",
+  "name": "eliaapi",
   "version": "1.0.0",
   "description": "",
   "main": "src/start.ts",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eliiia/eliamoneyzapi.git"
+    "url": "git+https://github.com/Eliiia/eliaapi.git"
   },
   "author": "Eliiia",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/Eliiia/eliamoneyzapi/issues"
+    "url": "https://github.com/Eliiia/eliaapi/issues"
   },
-  "homepage": "https://github.com/Eliiia/eliamoneyzapi#readme",
+  "homepage": "https://github.com/Eliiia/eliaapi#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
