@@ -22,8 +22,6 @@ export default function auth(req: Request, res: Response, next: NextFunction) {
                     return res.status(401).send({ err: "Invalid Token" });
             }
         }
-    } else if (req.headers.authorization.startsWith("ADMIN ")) {
-        if (auth == adminPw) req.user = "admin";
     } else return res.status(400).send();
 
     next();
