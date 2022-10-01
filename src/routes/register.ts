@@ -13,6 +13,7 @@ export default async function register(req: Request, res: Response) {
     const user = new User({
         username: req.body.username,
         password: hash(req.body.password),
+        currency: 0,
     });
 
     try {
